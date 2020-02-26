@@ -1,28 +1,34 @@
-#include  <iostream> 
-using  namespace  std; 
-int  main() 
+#include<iostream>
+using namespace std;
+int main()
 {
-	int c[9][9]={0},i,j,x,y=36,flag=0;
-	char b[8];
-	cin>>b;
-	for(i=0;i<8;i++)
+	int a[3][3],b[3][3],c[3][3]={0},i,j,k;
+	for(i=0;i<3;i++)
 	{
-		if(b[i]=='*')x=i+1;
-		else 
+		for(j=0;j<3;j++)
+    		cin>>a[i][j];
+	}
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+			cin>>b[i][j];	
+	}
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
 		{
-			c[i+1][b[i]-'0']=1;
-			y-=(b[i]-'0');
+			for(k=0;k<3;k++)
+			c[i][j]+=a[i][k]*b[k][j];
 		}
 	}
-	for(i=1;i<9;i++)
-	for(j=1;j<9;j++)
+	for(i=0;i<3;i++)
 	{
-		if(c[i][j]==1)
+		for(j=0;j<3;j++)
 		{
-			if((x-i)==(y-j)||(x-i)==(j-y))flag=1;
+			cout<<c[i][j]<<' ';
 		}
+		cout<<endl;
 	}
-	if(flag)cout<<"No Answer";
-	else cout<<y;
 }
+
 
